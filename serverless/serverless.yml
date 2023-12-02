@@ -1,0 +1,25 @@
+org: kennynguyen110702
+app: first-terraform-with-serverless
+service: terraform-serverless-integration
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+
+functions:
+  rdsConnector:
+    handler: handler.handle
+    environment:
+      DATABASE_ENDPOINT: "testdb.chkalu7setev.us-east-1.rds.amazonaws.com"
+      DATABASE_NAME: "test"
+      DATABASE_USER: "serverless"
+      DATABASE_PASSWORD: "PPwVvted7ACB1Df4"
+    events:
+      - http:
+          method: GET
+          path: /
