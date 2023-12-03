@@ -15,10 +15,10 @@ functions:
   rdsConnector:
     handler: handler.handle
     environment:
-      DATABASE_ENDPOINT: "testdb.chkalu7setev.us-east-1.rds.amazonaws.com"
-      DATABASE_NAME: "test"
-      DATABASE_USER: "serverless"
-      DATABASE_PASSWORD: "PPwVvted7ACB1Df4"
+      DATABASE_ENDPOINT: ${ssm:/database/testdb/endpoint~true}
+      DATABASE_NAME: ${ssm:/database/testdb/name~true}
+      DATABASE_USER: ${ssm:/database/testdb/user~true}
+      DATABASE_PASSWORD: ${ssm:/database/testdb/password~true}
     events:
       - http:
           method: GET
